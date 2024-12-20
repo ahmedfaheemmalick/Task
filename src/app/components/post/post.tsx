@@ -2,9 +2,18 @@ import * as React from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
+import { IconButton } from '@mui/material'
+import deleteIcon from '../../assets/trash.svg'
 import PostType from '../../types'
+import Image from 'next/image'
 
-const Post = ({ post }: { post: PostType }) => {
+const Post = ({
+  post,
+  handleDelete,
+}: {
+  post: PostType
+  handleDelete: (id: number) => void
+}) => {
   return (
     <Card
       sx={{
@@ -13,6 +22,7 @@ const Post = ({ post }: { post: PostType }) => {
         borderRadius: 2,
         boxShadow: 3,
         transition: 'transform 0.3s ease-in-out',
+        position: 'relative',
         '&:hover': {
           transform: 'scale(1.05)',
           boxShadow: 6,
@@ -37,6 +47,20 @@ const Post = ({ post }: { post: PostType }) => {
           }}>
           {post.body}
         </Typography>
+        <IconButton
+          sx={{
+            position: 'absolute',
+            bottom: 10,
+            right: 10,
+          }}>
+          <Image
+            width={25}
+            height={25}
+            src={deleteIcon}
+            alt='Delete Icon'
+            onClick={() => handleDelete(post.id)}
+          />
+        </IconButton>
       </CardContent>
     </Card>
   )

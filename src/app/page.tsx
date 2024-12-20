@@ -14,6 +14,11 @@ const Home = () => {
       .then(data => setPosts(data.splice(0, 10)))
   }, [])
 
+  const handleDelete = (id: number) => {
+    const newPosts = posts.filter(post => post.id !== id)
+    setPosts(newPosts)
+  }
+
   return (
     <div>
       <Grid container spacing={5}>
@@ -29,7 +34,7 @@ const Home = () => {
                 minWidth: 300,
                 minHeight: 200,
               }}>
-              <Post post={post} key={index} />
+              <Post post={post} key={index} handleDelete={handleDelete} />
             </Grid>
           ))}
       </Grid>
