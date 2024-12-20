@@ -6,15 +6,6 @@ import PostType from '../../types'
 
 const Post = ({ post }: { post: PostType }) => {
   return (
-    // <Card sx={{ minWidth: 275 }}>
-    //   <CardContent>
-    //     <Typography variant='h5' component='div'>
-    //       {post.title}
-    //     </Typography>
-    //     <Typography variant='body2'>{post.body}</Typography>
-    //   </CardContent>
-    // </Card>
-
     <Card
       sx={{
         minWidth: 330,
